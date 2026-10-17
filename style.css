@@ -1,0 +1,1226 @@
+    /* === VARIABILI DEL DESIGN === */
+    :root {
+      --terracotta: #D4621A;
+      --terracotta-hover: #BC5314;
+      --terracotta-light: #FCE8D3;
+      --terracotta-pale: #FFF6EB;
+      --amber: #F4AE52;
+      --amber-light: #FDEFD9;
+      --warm-bg: #FEF3E2;
+      --espresso: #2A1A0E;
+      --espresso-muted: #736053;
+      --espresso-light: #9E8B7E;
+      --card-border: #F6E4CE;
+      --white: #FFFFFF;
+      --success: #2E7D32;
+      --success-bg: #EBF7EE;
+      --shadow-warm: 0 8px 24px -4px rgba(42, 26, 14, 0.07);
+      --shadow-hover: 0 12px 28px -4px rgba(42, 26, 14, 0.12);
+      --shadow-cta: 0 6px 18px -2px rgba(212, 98, 26, 0.35);
+      --radius-card: 24px;
+      --radius-button: 999px;
+    }
+
+    /* === RESET E STILI GENERALI === */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--warm-bg);
+      color: var(--espresso);
+      font-family: "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(212, 98, 26, 0.35);
+      outline-offset: 3px;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .material-symbols-rounded {
+      font-family: "Material Symbols Rounded";
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .muted {
+      color: var(--espresso-muted);
+    }
+
+    .primary-button {
+      min-height: 46px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: var(--radius-button);
+      background: var(--terracotta);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      box-shadow: 0 3px 9px rgba(212, 98, 26, 0.14);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .primary-button:hover {
+      background: var(--terracotta-hover);
+    }
+
+    .primary-button:active {
+      transform: scale(0.98);
+    }
+
+    .secondary-button {
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-button);
+      background: #FFF7EE;
+      color: var(--espresso);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: background 0.2s;
+    }
+
+    .secondary-button:hover {
+      background: #FDF0E0;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    /* === HEADER FISSO === */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      width: 100%;
+      background: rgba(254, 243, 226, 0.93);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(246, 228, 206, 0.8);
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    .header-inner {
+      height: 56px;
+      max-width: 420px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(212, 98, 26, 0.10);
+      color: var(--terracotta);
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-icon .material-symbols-rounded {
+      font-size: 21px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font: 700 19px "Poppins", sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .profile-button {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--terracotta);
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 2px 6px rgba(42, 26, 14, 0.08);
+    }
+
+    .profile-button .material-symbols-rounded {
+      font-size: 21px;
+    }
+
+    /* === CONTENITORE PRINCIPALE === */
+    main {
+      width: 100%;
+      max-width: 420px;
+      min-height: calc(100dvh - 56px);
+      margin: 0 auto;
+      padding: 0 16px calc(28px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* === INTRODUZIONE === */
+    .intro {
+      padding: 20px 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .intro-icon {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: linear-gradient(35deg, rgba(244,174,82,.32), rgba(212,98,26,.15), rgba(212,98,26,.25));
+      box-shadow: inset 0 2px 5px rgba(42,26,14,.04);
+      color: var(--terracotta);
+      display: grid;
+      place-items: center;
+    }
+
+    .intro-icon .material-symbols-rounded {
+      font-size: 29px;
+    }
+
+    .intro h2 {
+      margin: 0;
+      font: 700 30px "Poppins", sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .intro p {
+      max-width: 280px;
+      margin: 6px 0 0;
+      color: var(--espresso-muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    /* === AZIONI PRINCIPALI === */
+    .main-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .main-actions button {
+      width: 100%;
+      min-height: 49px;
+      border-radius: var(--radius-button);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .main-actions .primary-button {
+      font-size: 15px;
+      box-shadow: var(--shadow-cta);
+    }
+
+    .main-actions .secondary-button {
+      background: #FFF9F1;
+      border-color: rgba(212, 98, 26, 0.25);
+      color: var(--terracotta);
+      box-shadow: 0 2px 5px rgba(42, 26, 14, 0.03);
+    }
+
+    .main-actions .secondary-button:hover {
+      background: #FFF4E4;
+    }
+
+    /* === PANNELLO CREAZIONE LISTA === */
+    .creation-panel {
+      margin-bottom: 18px;
+      padding: 17px;
+      background: white;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-warm);
+      scroll-margin-top: 76px;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .panel-heading h3 {
+      margin: 0;
+      font: 600 17px "Poppins", sans-serif;
+    }
+
+    .icon-button {
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: #FFF5EA;
+      color: var(--terracotta);
+      display: grid;
+      place-items: center;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 13px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--espresso-muted);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      min-height: 45px;
+      padding: 12px 13px;
+      border: 1px solid var(--card-border);
+      border-radius: 13px;
+      background: #FFFCF8;
+      color: var(--espresso);
+      font-size: 14px;
+    }
+
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #B4A397;
+    }
+
+    .field-hint {
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--espresso-light);
+    }
+
+    /* === RIGHE PRODOTTO CON SCADENZA FACOLTATIVA === */
+    .product-entry-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 9px 0 12px;
+    }
+
+    .product-entry {
+      padding: 11px;
+      border: 1px solid var(--card-border);
+      border-radius: 15px;
+      background: #FFFCF8;
+    }
+
+    .product-entry-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .product-entry label,
+    .expiry-field-label {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: var(--espresso-muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .product-entry input,
+    .detail-expiry-input {
+      width: 100%;
+      min-width: 0;
+      min-height: 40px;
+      padding: 9px 10px;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      background: white;
+      color: var(--espresso);
+      font-size: 12px;
+    }
+
+    .product-entry-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+
+    .product-entry-remove {
+      border: 0;
+      background: transparent;
+      color: #B3261E;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 3px;
+    }
+
+    .add-product-row-button {
+      width: 100%;
+      min-height: 40px;
+      border: 1px dashed rgba(212,98,26,.4);
+      border-radius: 12px;
+      background: var(--terracotta-pale);
+      color: var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .expiry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 5px;
+      padding: 4px 7px;
+      border-radius: 8px;
+      background: #F2F5E9;
+      color: #49652C;
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .expiry-badge.soon {
+      background: #FFF0D9;
+      color: #92520B;
+    }
+
+    .expiry-badge.expired {
+      background: #FCE8E6;
+      color: #B3261E;
+    }
+
+    .detail-product {
+      align-items: flex-start;
+    }
+
+    .detail-product-main {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .detail-product-main > label {
+      flex: initial;
+    }
+
+    .detail-expiry-input {
+      min-height: 34px;
+      max-width: 190px;
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+
+    @media (min-width: 360px) {
+      .product-entry-fields {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      }
+    }
+
+    .creation-date {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      background: var(--terracotta-pale);
+      color: var(--espresso-muted);
+      font-size: 12px;
+    }
+
+    .creation-date .material-symbols-rounded {
+      color: var(--amber);
+      font-size: 19px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .form-actions > button {
+      flex: 1;
+    }
+
+    /* === DATA DELLA SESSIONE === */
+    .session-badge {
+      min-height: 45px;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-button);
+      box-shadow: 0 2px 5px rgba(42,26,14,.025);
+    }
+
+    .session-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--espresso-muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .session-label .material-symbols-rounded {
+      color: var(--amber);
+      font-size: 18px;
+    }
+
+    .session-date {
+      text-align: right;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    /* === PROMEMORIA INTELLIGENTE === */
+    .reminder-card {
+      padding: 16px;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      border: 1px solid rgba(244,174,82,.45);
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, white, #FFF9F3, #FEF3E4);
+      box-shadow: var(--shadow-warm);
+    }
+
+    .reminder-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .reminder-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      margin-top: 2px;
+      border-radius: 50%;
+      background: rgba(244,174,82,.2);
+      color: var(--terracotta);
+      display: grid;
+      place-items: center;
+    }
+
+    .reminder-icon .material-symbols-rounded {
+      font-size: 21px;
+    }
+
+    .reminder-content h3 {
+      margin: 0;
+      font: 600 15px "Poppins", sans-serif;
+      line-height: 1.4;
+    }
+
+    .reminder-content p {
+      margin: 5px 0 0;
+      color: var(--espresso-muted);
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    .reminder-content strong {
+      color: var(--espresso);
+    }
+
+    .reminder-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .reminder-actions button {
+      min-height: 40px;
+      padding: 9px 7px;
+      font-size: 11.5px;
+    }
+
+    /* === SEZIONE LISTE === */
+    .lists-section {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 2px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .material-symbols-rounded {
+      color: var(--terracotta);
+      font-size: 22px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font: 700 16px "Poppins", sans-serif;
+      letter-spacing: -0.3px;
+    }
+
+    .list-count {
+      flex-shrink: 0;
+      padding: 5px 11px;
+      border-radius: var(--radius-button);
+      background: var(--terracotta-light);
+      color: var(--terracotta);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* === SINGOLA SCHEDA LISTA === */
+    .list-card {
+      min-width: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: white;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-warm);
+      transition: box-shadow 0.2s;
+    }
+
+    .list-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .list-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 9px;
+    }
+
+    .list-title-wrap {
+      min-width: 0;
+    }
+
+    .list-title {
+      margin: 0;
+      overflow-wrap: anywhere;
+      font: 600 15px "Poppins", sans-serif;
+      line-height: 1.45;
+    }
+
+    .list-meta {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px 6px;
+      color: var(--espresso-muted);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    .list-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    .list-source .material-symbols-rounded {
+      font-size: 15px;
+    }
+
+    .document-badge {
+      flex-shrink: 0;
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(244,174,82,.35);
+      border-radius: 14px;
+      background: #FFF5EA;
+      color: var(--terracotta);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+    }
+
+    .document-badge .material-symbols-rounded {
+      font-size: 20px;
+    }
+
+    .document-badge small {
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .list-menu-wrap {
+      position: relative;
+    }
+
+    .list-menu-button {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: #FFF8F0;
+      color: var(--espresso-muted);
+      display: grid;
+      place-items: center;
+    }
+
+    .list-menu-button .material-symbols-rounded {
+      font-size: 22px;
+    }
+
+    .list-menu {
+      position: absolute;
+      z-index: 10;
+      top: 38px;
+      right: 0;
+      width: 180px;
+      padding: 6px;
+      border: 1px solid var(--card-border);
+      border-radius: 15px;
+      background: white;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .list-menu button {
+      width: 100%;
+      padding: 11px 10px;
+      border: 0;
+      border-radius: 9px;
+      background: white;
+      color: var(--espresso);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+    }
+
+    .list-menu button:hover {
+      background: #FFF6EB;
+    }
+
+    .list-menu .delete-action {
+      color: #B3261E;
+    }
+
+    .list-menu .material-symbols-rounded {
+      font-size: 19px;
+    }
+
+    /* === ANTEPRIMA DEI PRODOTTI === */
+    .products-preview {
+      padding: 11px;
+      border: 1px solid rgba(246,228,206,.8);
+      border-radius: 16px;
+      background: #FFF9F3;
+    }
+
+    .preview-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--espresso-light);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .product-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .product-chip {
+      max-width: 100%;
+      padding: 6px 10px;
+      overflow-wrap: anywhere;
+      border: 1px solid rgba(246,228,206,.7);
+      border-radius: var(--radius-button);
+      background: white;
+      color: var(--espresso);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .product-chip.consumed {
+      opacity: .65;
+      text-decoration: line-through;
+    }
+
+    .product-chip.expiring {
+      border-color: rgba(212,98,26,.4);
+      background: var(--terracotta-light);
+    }
+
+    /* === STATO DELLA LISTA === */
+    .status-bar {
+      padding: 8px 11px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(244,174,82,.3);
+      border-radius: var(--radius-button);
+      background: rgba(244,174,82,.15);
+      color: var(--espresso);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .status-bar .material-symbols-rounded {
+      flex-shrink: 0;
+      color: var(--terracotta);
+      font-size: 16px;
+    }
+
+    .status-bar.complete {
+      border-color: #CDEED5;
+      background: var(--success-bg);
+      color: #225725;
+    }
+
+    .status-bar.complete .material-symbols-rounded {
+      color: var(--success);
+    }
+
+    /* === PULSANTI DELLE SCHEDE === */
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .card-actions button {
+      min-width: 0;
+      min-height: 40px;
+      padding: 9px 7px;
+      font-size: 12px;
+    }
+
+    /* === PANNELLO DI DETTAGLIO === */
+    .detail-panel {
+      margin-top: 2px;
+      padding: 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: #FFFCF8;
+    }
+
+    .detail-panel h4 {
+      margin: 0 0 12px;
+      font: 600 14px "Poppins", sans-serif;
+    }
+
+    .detail-product {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 0;
+      border-bottom: 1px solid #F5EBDD;
+    }
+
+    .detail-product:last-child {
+      border-bottom: 0;
+    }
+
+    .detail-product input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--terracotta);
+      flex-shrink: 0;
+    }
+
+    .detail-product label {
+      min-width: 0;
+      flex: 1;
+      overflow-wrap: anywhere;
+      font-size: 12px;
+    }
+
+    .detail-product label small {
+      display: block;
+      margin-top: 3px;
+      color: var(--espresso-light);
+      font-size: 10px;
+    }
+
+    .remove-product-button {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--espresso-light);
+      display: grid;
+      place-items: center;
+    }
+
+    .remove-product-button:hover {
+      color: #B3261E;
+      background: #FCE8E6;
+    }
+
+    .detail-add-row {
+      display: flex;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .detail-add-row input {
+      min-width: 0;
+      flex: 1;
+      height: 42px;
+      padding: 0 11px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: white;
+      font-size: 12px;
+    }
+
+    .detail-add-row button {
+      width: 43px;
+      height: 42px;
+      flex-shrink: 0;
+      border: 0;
+      border-radius: 12px;
+      background: var(--terracotta);
+      color: white;
+      display: grid;
+      place-items: center;
+    }
+
+    /* === PULSANTE FINALE === */
+    .bottom-prompt {
+      width: 100%;
+      margin-top: 24px;
+      padding: 22px 17px;
+      border: 2px dashed rgba(212,98,26,.3);
+      border-radius: var(--radius-card);
+      background: rgba(255,255,255,.7);
+      color: var(--espresso);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 9px;
+      transition: background .2s, transform .2s;
+    }
+
+    .bottom-prompt:hover {
+      background: white;
+    }
+
+    .bottom-prompt:active {
+      transform: scale(.99);
+    }
+
+    .bottom-prompt-icon {
+      width: 49px;
+      height: 49px;
+      margin-bottom: 2px;
+      border: 1px solid rgba(244,174,82,.4);
+      border-radius: 50%;
+      background: var(--terracotta-pale);
+      color: var(--terracotta);
+      display: grid;
+      place-items: center;
+    }
+
+    .bottom-prompt-icon .material-symbols-rounded {
+      font-size: 25px;
+    }
+
+    .bottom-prompt strong {
+      max-width: 290px;
+      font: 600 14px "Poppins", sans-serif;
+      line-height: 1.5;
+    }
+
+    .bottom-prompt > span:last-child {
+      color: var(--espresso-muted);
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    /* === STATO VUOTO === */
+    .empty-state {
+      padding: 25px 14px;
+      border: 1px dashed var(--card-border);
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255,255,255,.5);
+    }
+
+    .empty-state .material-symbols-rounded {
+      color: var(--terracotta);
+      font-size: 35px;
+    }
+
+    .empty-state p {
+      margin: 9px 0 0;
+      color: var(--espresso-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* === FINESTRA MODALE === */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42,26,14,.42);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 380px;
+      max-height: 85dvh;
+      overflow-y: auto;
+      padding: 20px;
+      border: 1px solid var(--card-border);
+      border-radius: 25px;
+      background: var(--warm-bg);
+      box-shadow: 0 20px 60px rgba(42,26,14,.2);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font: 600 17px "Poppins", sans-serif;
+    }
+
+    .modal p {
+      color: var(--espresso-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+    }
+
+    .photo-preview {
+      display: block;
+      width: 100%;
+      max-height: 280px;
+      margin: 10px 0;
+      object-fit: contain;
+      border: 1px solid var(--card-border);
+      border-radius: 15px;
+      background: white;
+    }
+
+    .camera-label {
+      width: 100%;
+      min-height: 45px;
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid rgba(212,98,26,.25);
+      border-radius: var(--radius-button);
+      background: white;
+      color: var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .camera-label input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    .feedback {
+      min-height: 18px;
+      margin-top: 9px;
+      color: var(--espresso-muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* === MESSAGGI TEMPORANEI === */
+    .toast {
+      position: fixed;
+      z-index: 150;
+      left: 50%;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      width: max-content;
+      max-width: calc(100% - 32px);
+      padding: 12px 16px;
+      transform: translateX(-50%);
+      border: 1px solid rgba(246,228,206,.8);
+      border-radius: var(--radius-button);
+      background: var(--espresso);
+      color: white;
+      box-shadow: var(--shadow-hover);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* === ADATTAMENTO A SCHERMI PICCOLI === */
+    @media (max-width: 360px) {
+      main {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .session-badge {
+        padding: 9px 10px;
+      }
+
+      .session-date {
+        font-size: 10px;
+      }
+
+      .section-title h3 {
+        font-size: 14px;
+      }
+
+      .list-card {
+        padding: 12px;
+      }
+
+      .reminder-actions button,
+      .card-actions button {
+        font-size: 11px;
+      }
+    }
+
+    /* === SCHERMI GRANDI === */
+    @media (min-width: 600px) {
+      body {
+        background: #F9EBD7;
+      }
+
+      .app-header {
+        box-shadow: 0 2px 8px rgba(42,26,14,.025);
+      }
+
+      main {
+        background: var(--warm-bg);
+        box-shadow: 0 0 35px rgba(42,26,14,.035);
+      }
+    }
+
+    /* === ACCESSIBILITÀ === */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
